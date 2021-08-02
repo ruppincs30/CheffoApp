@@ -1,0 +1,302 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Title Page-->
+    <title>Cheffo</title>
+    <link rel="shortcut icon" type="image/x-icon" href="../Img/CheffoLogo.png" />
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+            crossorigin="anonymous"></script>
+
+    <!--***************************************datatables*********************************************-->
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css">
+
+    <!--***************************************ajaxCalls*********************************************-->
+    <script src="../Scripts/ajaxCalls.js"></script>
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+
+
+
+    <!--***************************************StyleSheets*********************************************-->
+    <link href="../css/main.css" rel="stylesheet" />
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/ui/4.8.0/firebase-ui-auth.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.0/firebase-ui-auth.css" />
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   
+
+</head>
+<body>
+    <div id="LoginDiv">
+        <h2>Welcome To Cheffo - Chef's Interface</h2>
+
+        <div class="container" id="container">
+            <div class="form-container sign-up-container">
+                <form class="signInform" action="#">
+                    <h1>Create Account</h1>
+
+                    <span>or use your email for registration</span>
+                    <input id="emailSignUp" type="email" placeholder="Email" />
+                    <input id="passwordSignUp" type="password" placeholder="Password" />
+                    <input id="fullName" type="text" placeholder="Full Name" />
+                    <input id="displayName" type="text" placeholder="Restaurant Name" />
+                    <input id="foodType" type="text" placeholder="Food Type" />
+                    <input id="PNumber" type="text" placeholder="Phone number" />
+                    <input id="imgUrl" type="text" placeholder="img Url" />
+                    <input id="addressSignUp" type="text" placeholder="Address" disabled/>
+                    <button id="signUpBtn">Sign Up</button>
+                </form>
+            </div>
+            <div class="form-container sign-in-container">
+                <form class="signInform" action="#">
+                    <h1>Sign in</h1>
+                    <input id="emailSignIn" type="email" placeholder="Email" />
+                    <input id="passwordSignIn" type="password" placeholder="Password" />
+                    <button id="signInBtn">Sign In</button>
+                </form>
+            </div>
+            <div class="overlay-container">
+                <div class="overlay">
+                    <div class="overlay-panel overlay-left">
+                        <h1>Welcome Back!</h1>
+                        <p>To keep connected with us please login with your personal info</p>
+                        <button class="ghost" id="signIn">Sign In</button>
+                    </div>
+                    <div class="overlay-panel overlay-right">
+                        <h1>Hello, New Cheffo!</h1>
+                        <p>Enter your personal details and start journey with us</p>
+                        <button class="ghost" id="signUp">Sign Up</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="MainDiv">
+
+        <!--<*********************************************************navBar***********************************************>-->
+        <section class="navigation">
+            <div class="nav-container">
+                <div class="brand">
+                    <h5 id="h1Name"></h5>
+                </div>
+                <nav>
+                    <div class="nav-mobile"><a id="navbar-toggle" href="#!"><span></span></a></div>
+                    <ul class="nav-list">
+                        <li>
+                            <a href="#!" onclick="homePage()">Reviews</a>
+                        </li>
+                        <li>
+                            <a href="#myDishesPage" onclick="myDishesPage()">My Dishes</a>
+                        </li>
+                        <li>
+                            <a href="#!" onclick="ordersPage()">Orders</a>
+                        </li>
+
+                        <li>
+                            <a href="#!" onclick="profilePage()">My Profile</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </section>
+        <!--***************************************Home Page*********************************************-->
+        <div id="homePage">
+            <div style="display: flex;align-items: center;justify-content: center;width: 100%;">
+               
+                <div class="card">
+                    <h3>Reviews Avg.</h3>
+                    <h1 id="totalReview"></h1>
+                </div>
+                <div class="card">
+                    <h3>Number of reviews</h3>
+                    <h1 id="numOfReviews"></h1>
+                </div>
+
+            </div>
+           
+            <div  id="reviewDiv">
+                <table id="reviewTable" class="display nowrap" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Reviewed By</th>
+                            <th>User Email</th>
+                            <th>Review Text</th>
+                            <th>Service R.</th>
+                            <th>Food R. </th>
+                            <th>Avg. R.</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+
+
+        <!--***************************************My Dishes Page*********************************************-->
+        <div id="myDishesPage">
+            <div id="myDishesDiv">
+                
+                <table id="myDishesTable" class="display nowrap" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>Dish Id</th>
+                            <th>Dish Name</th>
+                            <th>Dish Type</th>
+                            <th>Description</th>
+                            <th>Price</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                </table>
+                <button onclick="newDishBtn()" id="newDishBtn">New</button>
+            </div>
+
+
+            <!--***************************************editDiv-manager*********************************************-->
+            <div id="editmyDishesDiv">
+                <div id="editImgDiv">
+                    <img id="dishImg" style="width: 95%;margin-bottom: 10%;height: 310px;padding-top: 28px;" />
+                    <div style="display: flex;align-items: center;justify-content: center;">
+                      
+                        <button type="button" onclick="submitEditForm()" style="background-color: green;border: green;margin-right: 15px;">
+                            Submit
+                        </button>
+                        <button type="button" onclick="clearEditForm()"> Clear</button>
+                    </div>
+                </div>
+
+                <div id="editFormDiv">
+
+                    <label for="fname">Dish Name</label>
+                    <input type="text" id="dishName" name="DishName" placeholder="Dish Name...">
+
+                    <label for="lname">Dish Type</label>
+                    <input type="text" id="dishType" name="DishType" placeholder="Dish Type...">
+
+                    <label for="lname">Description</label>
+                    <input type="text" id="dishDescription" name="Description" placeholder="Description...">
+
+                    <label for="lname">Price</label>
+                    <input type="number" id="dishPrice" name="Price" placeholder="Price...">
+
+                    <label for="lname">Image Url</label>
+                    <input type="text" id="dishImage" name="Image" placeholder="Image url">
+                </div>
+
+            </div>
+        </div>
+           
+
+
+
+        <!--***************************************Orders Page*********************************************-->
+        <div id="ordersPage">
+                <table id="ordersTable" class="display nowrap" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>Order #</th>
+                            <th>User Id</th>
+                            <th>Order Time</th>
+                            <th>Description</th>
+                            <th>Price</th>
+                            <th>Review </th>
+                            <th>Status</th>
+                            <th>Set Status</th>
+                        </tr>
+                    </thead>
+                </table>
+        </div>
+
+
+
+        <!--***************************************Profile Page*********************************************-->
+        <div id="profilePage">
+            <div id="editmyDishesDiv">
+                <div id="editImgDiv">
+
+                    <img id="profileImg" style="width: 95%;margin-bottom: 10%;height: 310px;padding-top: 28px;" />
+                    <div style="display: flex;align-items: center;justify-content: center;">
+
+                        <button type="button" id="editProfileBtn" onclick="editProfileBtn()" style="background-color: green;border: green;margin-right: 15px;">
+                            Edit
+                        </button>
+                        <button type="button" id="saveProfileBtn" onclick="saveProfileBtn()" style="background-color: green;border: green;margin-right: 15px;">
+                            Save
+                        </button>
+                        <button type="button" onclick="LogoOut()"> LogOut</button>
+
+                    </div>
+                </div>
+                <div id="editFormDiv">
+                    <label>Your Name</label>
+                    <input type="text" id="profileName" disabled>
+                    <label>Address</label>
+                    <input type="text" id="profileAddress" disabled>
+                    <label>Restaurant Name</label>
+                    <input type="text" id="profileRestaurantName" disabled>
+                    <label>Email</label>
+                    <input type="text" id="profileEmail" disabled>
+                    <label>Phone</label>
+                    <input type="text" id="profilePhone" disabled>
+                    <label>Img Url</label>
+                    <input type="text" id="profileImgUrl" disabled>
+                </div>
+              
+            </div>
+           
+        </div>
+    </div>
+  
+
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-firestore.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-analytics.js"></script>
+
+    <script>
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        var firebaseConfig = {
+            apiKey: "AIzaSyAERIf44H1vL-rtvvZUjXIioHeLF97B32s",
+            authDomain: "homealsdb.firebaseapp.com",
+            databaseURL: "https://homealsdb-default-rtdb.firebaseio.com",
+            projectId: "homealsdb",
+            storageBucket: "homealsdb.appspot.com",
+            messagingSenderId: "100881482122",
+            appId: "1:100881482122:web:1593f1be9fe462e41e4873",
+            measurementId: "G-CBCMGP3LLX"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+    </script>
+    <script src="../Scripts/mainJs.js"></script>
+
+
+
+</body>
+</html>
