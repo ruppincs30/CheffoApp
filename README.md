@@ -17,4 +17,5 @@ The chefs interface is a web interface and there are 4 tabs:
 Project link: http://proj.ruppin.ac.il/gallery/#/rue42p5 Cheffo app video : https://youtu.be/CBq4pWvFVu0
 
 
-# This project made by: Asaf Sasson, Asaf Bazir and Shachar Petkovski
+**This project made by: Asaf Sasson, Asaf Bazir and Shachar Petkovski
+**
