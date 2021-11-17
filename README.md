@@ -9,10 +9,10 @@ There are two interfaces:
 The customer interface is basically an application where you can search for the desired food according to distance, rating, etc. You can see previous orders, reviews and profile. In addition, we created a social network that any user can follow another user and thus see the food orders he posted and thus will rely on his order for a personal recommendation of a friend, in the search tab you can also find weighted rating of a chef that gives more weight to the user's social network reviews (besides the simple average rating of the chef).
 
 The chefs interface is a web interface and there are 4 tabs:
-1)reviews- see all of the reviews of users from the app posted.
-2)new orders- see incoming orders and choose whether to approve an order or decline an order and to update the order status (preparing, waiting for pickup, etc..).
-3)dishes- edit food menu.
-4)profile- edit personal info.
+1) reviews- see all of the reviews of users from the app posted.
+2) new orders- see incoming orders and choose whether to approve an order or decline an order and to update the order status (preparing, waiting for pickup, etc..).
+3) dishes- edit food menu.
+4) profile- edit personal info.
 
 Project link: http://proj.ruppin.ac.il/gallery/#/rue42p5 Cheffo app video : https://youtu.be/CBq4pWvFVu0
 
