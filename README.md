@@ -6,7 +6,7 @@ There are two interfaces:
 1) Interface for a customer who wants to order food - Cheffo app (React Native (Expo), C#, ASP.NET, SQL, Firebase)
 2) Interface for chefs - Cheffo web (HTML, Javascript, jQuery, C#, ASP.NET, SQL, Firebase)
 
-The customer interface is basically an application where you can search for the desired food according to distance, rating, etc. You can see previous orders, reviews and profile. In addition, we created a social network that any user can follow another user and thus see the food orders he posted and thus will rely on his order for a personal recommendation of a friend, in the search tab you can also find weighted rating of a chef that gives more weight to the user's social network reviews (besides the simple average rating of the chef).
+The customer interface is basically an application where you can search for the desired food according to distance, rating, etc. You can see previous orders, reviews and profile. In addition, we created a social network that any user can follow another user and thus see the food orders he posted and thus will rely on his order for a personal recommendation of a friend. In the search tab you can also find weighted rating of a chef that gives more weight to the user's social network reviews (besides the simple average rating of the chef).
 
 The chefs interface is a web interface and there are 4 tabs:
 1) reviews- see all of the reviews of users from the app posted.
