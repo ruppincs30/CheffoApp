@@ -1,4 +1,4 @@
-## Cheffo- homemade food ordering application based on location and social network
+### Cheffo- homemade food ordering application based on location and social network
 
 Cheffo aims to connect chefs / cooks / people who like to cook with people who are interested in home-made and quality food. Our assumption is that people have started to cook more home-cooked food and order food home instead of restaurants (mainly due to the corona virus), in addition there are 'Kibbutzim' and 'Moshavim' communities around which there is not much variety of restaurants or not at all.
 
